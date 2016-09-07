@@ -4,6 +4,7 @@
   :description "A very simple interface to the Raspberry Pi GPIO ports, using sysfs."
   :author "Sergi Reyner <sergi.reyner@gmail.com>"
   :license "MIT"
+  :depends-on (#:sb-posix)
   :serial t
   :components ((:file "package")
                (:file "macros")

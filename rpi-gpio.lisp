@@ -12,11 +12,15 @@
 
 (defun gpio-export (pins)
   "Enables a particular pin or set of pins, by telling sysfs to create
-a directory and files to access it."
+a directory and files to access it. Waits until the symlink's group changes to non-root."
   (mapc (lambda (pin)
           (with-open-file
               (f (gpio-path :export) :direction :output :if-exists :append)
-            (format f "~A" pin)))
+            (declare (optimize (speed 0)))
+            (format f "~A" pin)
+            (force-output f)
+            (loop :for f := (sb-posix:stat (gpio-path "" pin))
+               :until (/= (sb-posix:stat-gid f) 0))))
         (mklist pins)))
 
 (defun gpio-unexport (pins)

@@ -1,5 +1,5 @@
 * About rpi-gpio
-  This is a very simple library to interact with the Raspebrry Pi's
+  This is a very simple library to interact with the Raspberry Pi's
   GPIO ports, by means (so far) of the sysfs interface. While this is
   not the most efficient approach, it has the advantages of not
   requiring any external library, and not needing to know any memory
@@ -22,6 +22,4 @@
   - Generalise it to other GPIOs, since it seems that the sysfs
     interface is generic.
   - Additional ways of accessing the GPIO ports.
-  - Figure out a more elegant wait than inserting a (SLEEP 0.1) in the
-    expansion of WITH-GPIO-PINS.
   - Tests?

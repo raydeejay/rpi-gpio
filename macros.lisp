@@ -7,7 +7,6 @@
         (progn ,@(mapcar (lambda (pin-data)
                            `(gpio::gpio-export ,(second pin-data)))
                          pins)
-               (sleep 0.1) ; give sysfs time to create the pins' directories
                ,@(mapcar (lambda (pin-data)
                            `(gpio::gpio-direction ,(second pin-data)
                                                   ,(first pin-data)))
