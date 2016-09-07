@@ -41,6 +41,14 @@ or :OUT."
             (format f "~A" (string-downcase dir))))
         (mklist pins)))
 
+(defun gpio-active-low (pins value)
+  "Configures a pin or set of pins for active_low or not. VALUE is either 1 or 0."
+  (mapc (lambda (pin)
+          (with-open-file
+              (f (gpio-path :active_low pin) :direction :output :if-exists :append)
+            (format f "~A" value)))
+        (mklist pins)))
+
 (defun gpio-write (pins value)
   "Writes a value to a pin or set or pins. The value should be either 0 or 1."
   (mapc (lambda (pin)

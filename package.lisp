@@ -6,6 +6,7 @@
   (:export #:gpio-export
            #:gpio-unexport
            #:gpio-direction
+           #:gpio-active-low
            #:gpio-read
            #:gpio-write
            #:with-gpio-pins))
